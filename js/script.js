@@ -1,0 +1,1 @@
+console.log("Teste inicial do JS. Olá, mundo! :)");
