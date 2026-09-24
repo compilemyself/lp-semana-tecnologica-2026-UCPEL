@@ -3,16 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Semana Tecnológica UCPel</title>
-
+    <meta name="description" content="Semana Tecnológica UCPel 2026">
+    <meta name="theme-color" content="#17213f">
+    <title>Semana Tecnológica UCPel 2026</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<body id="top">
+<header class="site-header">
+    <a class="header-logo" href="#top" aria-label="UCPel — início">
+        <img src="/semana-tecnologica-2026/img/logo/LOGO UCPEL PREFERENCIAL.png" alt="Universidade Católica de Pelotas">
+    </a>
 
-<body>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#top">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#programacao">Programação</a>
+        <a href="#palestrantes">Palestrantes</a>
+        <a href="#local">Contato</a>
+        <a class="header-cta" href="#inscricao">INSCREVA-SE</a>
+    </nav>
 
-    <h1>Semana Tecnológica UCPel</h1>
+    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+    </button>
 
-    <script src="js/script.js"></script>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel" aria-hidden="true">
+        <a href="#sobre">Sobre</a>
+        <a href="#programacao">Programação</a>
+        <a href="#palestrantes">Palestrantes</a>
+        <a href="#local">Contato</a>
+        <a class="mobile-nav-cta" href="#inscricao">Inscreva-se</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-main">
+            <div class="hero-copy">
+                <p class="hero-kicker">SEMANA TECNOLÓGICA</p>
+                <h1 id="hero-title">UCPEL 2026</h1>
+                <a class="outline-button hero-button" href="#inscricao">INSCREVA-SE</a>
+            </div>
+
+            <figure class="hero-image-block">
+                <div class="image-placeholder large-placeholder" role="img" aria-label="Área reservada para imagem principal do evento">
+                    <span class="image-icon" aria-hidden="true"></span>
+                </div>
+                <figcaption class="hero-image-caption">Tecnologia, conhecimento e conexões em um só evento.</figcaption>
+            </figure>
+        </div>
+
+        <div class="hero-bottom">
+            <p>Participe de oficinas, palestras e encontros<br>com quem faz tecnologia acontecer.</p>
+            <div class="hero-meta">
+                <span><strong>DATA</strong><small>05 a 09 de outubro</small></span>
+                <span><strong>LOCAL</strong><small>UCPel · Pelotas/RS</small></span>
+            </div>
+        </div>
+
+        <a class="scroll-prompt" href="#programacao" aria-label="Ir para a programação">
+            <em>VER PROGRAMAÇÃO E MAIS</em>
+            <strong aria-hidden="true">↓</strong>
+        </a>
+    </section>
+
+    <section class="section about" id="sobre" aria-labelledby="about-title">
+        <div class="section-title">
+            <span class="eyebrow">CONHEÇA O EVENTO</span>
+            <h2 id="about-title">Sobre o evento</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-left">
+                <article class="about-intro panel">
+                    <span class="card-kicker">SEMANA TECNOLÓGICA UCPel</span>
+                    <h3>Conhecimento que vira experiência.</h3>
+                    <p>A Semana Tecnológica reúne estudantes, professores, profissionais e entusiastas para compartilhar conhecimentos, experiências e possibilidades no campo da tecnologia.</p>
+                </article>
+
+                <div class="video-frame panel">
+                    <iframe
+                        src="https://www.youtube.com/embed/iI-4nVWO9DE?rel=0&playsinline=1"
+                        title="Vídeo provisório da Semana Tecnológica"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="about-topics panel">
+                <article>
+                    <span class="topic-icon" aria-hidden="true">01</span>
+                    <div><h3>PALESTRAS</h3><p>Experiências, tendências e perspectivas de profissionais da área.</p></div>
+                </article>
+                <article>
+                    <span class="topic-icon" aria-hidden="true">02</span>
+                    <div><h3>OFICINAS</h3><p>Atividades práticas para transformar conhecimento em experiência.</p></div>
+                </article>
+                <article>
+                    <span class="topic-icon" aria-hidden="true">03</span>
+                    <div><h3>CONEXÕES</h3><p>Encontros entre estudantes, professores e profissionais.</p></div>
+                </article>
+            </div>
+        </div>
+
+        <p class="section-note">Uma programação pensada para aproximar a comunidade acadêmica das tecnologias e práticas que movimentam o mercado.</p>
+    </section>
+
+    <section class="section schedule-section" id="programacao" aria-labelledby="schedule-title">
+        <div class="section-title">
+            <span class="eyebrow">AGENDA</span>
+            <h2 id="schedule-title">Programação</h2>
+            <p>Selecione um dia para consultar as atividades.</p>
+        </div>
+
+        <div class="day-tabs" role="tablist" aria-label="Dias da programação">
+            <button class="day-tab is-active" id="tab-SEG" data-day="SEG" type="button" role="tab" aria-selected="true" aria-controls="schedule-table">SEG</button>
+            <button class="day-tab" id="tab-TER" data-day="TER" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">TER</button>
+            <button class="day-tab" id="tab-QUA" data-day="QUA" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">QUA</button>
+            <button class="day-tab" id="tab-QUI" data-day="QUI" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">QUI</button>
+            <button class="day-tab" id="tab-SEX" data-day="SEX" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">SEX</button>
+        </div>
+
+        <div class="schedule-table-wrap">
+            <table class="schedule-table" id="schedule-table">
+                <thead>
+                    <tr><th>DATA</th><th>HORA</th><th>ATIVIDADE</th><th>PALESTRANTE</th><th>LOCAL</th></tr>
+                </thead>
+                <tbody>
+                    <tr data-day="SEG"><td>SEG 05/10</td><td>09:00</td><td>Abertura da Semana Tecnológica</td><td>Equipe UCPel</td><td>Auditório</td></tr>
+                    <tr data-day="TER"><td>TER 06/10</td><td>09:00</td><td>Inteligência artificial aplicada</td><td>Nome Sobrenome</td><td>Auditório</td></tr>
+                    <tr data-day="TER"><td>TER 06/10</td><td>14:00</td><td>Oficina de desenvolvimento</td><td>Nome Sobrenome</td><td>Laboratório</td></tr>
+                    <tr data-day="QUA"><td>QUA 07/10</td><td>09:00</td><td>Dados e inovação</td><td>Nome Sobrenome</td><td>Auditório</td></tr>
+                    <tr data-day="QUA"><td>QUA 07/10</td><td>14:00</td><td>Oficina de dados</td><td>Nome Sobrenome</td><td>Laboratório</td></tr>
+                    <tr data-day="QUI"><td>QUI 08/10</td><td>09:00</td><td>Carreira em tecnologia</td><td>Nome Sobrenome</td><td>Auditório</td></tr>
+                    <tr data-day="QUI"><td>QUI 08/10</td><td>14:00</td><td>Oficina de prototipação</td><td>Nome Sobrenome</td><td>Laboratório</td></tr>
+                    <tr data-day="SEX"><td>SEX 09/10</td><td>09:00</td><td>Encerramento</td><td>Equipe UCPel</td><td>Auditório</td></tr>
+                    <tr data-day="SEX"><td>SEX 09/10</td><td>14:00</td><td>Encontro e conexões</td><td>Convidados</td><td>Hall</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mobile-activities" aria-live="polite"></div>
+    </section>
+
+    <section class="section people-section" id="palestrantes" aria-labelledby="speakers-title">
+        <div class="section-title">
+            <span class="eyebrow">CONVIDADOS</span>
+            <h2 id="speakers-title">Palestrantes</h2>
+        </div>
+
+        <div class="carousel speakers-carousel">
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Palestrante anterior" aria-controls="speakers-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
+            <div class="people-track carousel-track" id="speakers-track" tabindex="0">
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Inteligência Artificial<br><a href="#">LinkedIn</a></div>
+                </article>
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Desenvolvimento<br><a href="#">LinkedIn</a></div>
+                </article>
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Dados e Tecnologia<br><a href="#">LinkedIn</a></div>
+                </article>
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Produto e Inovação<br><a href="#">LinkedIn</a></div>
+                </article>
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Segurança da Informação<br><a href="#">LinkedIn</a></div>
+                </article>
+                <article class="speaker-card">
+                    <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
+                    <div class="speaker-name">Nome Sobrenome</div>
+                    <div class="speaker-meta">Empreendedorismo<br><a href="#">LinkedIn</a></div>
+                </article>
+            </div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Próximo palestrante" aria-controls="speakers-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
+        </div>
+
+        <div class="section-title workshops-title">
+            <span class="eyebrow">ATIVIDADES PRÁTICAS</span>
+            <h2>Oficinas</h2>
+        </div>
+
+        <div class="carousel workshops-carousel">
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Oficina anterior" aria-controls="workshops-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
+            <div class="workshop-track carousel-track" id="workshops-track" tabindex="0">
+                <article class="workshop-card" tabindex="0">
+                    <div class="workshop-title"><strong>Oficina<br>de desenvolvimento</strong><span>Responsável</span></div>
+                    <div class="workshop-detail">Uma atividade prática para explorar conceitos, ferramentas e etapas de desenvolvimento em um ambiente guiado.</div>
+                    <div class="workshop-responsible">Nome Sobrenome<br><small>2h · Laboratório</small></div>
+                </article>
+                <article class="workshop-card" tabindex="0">
+                    <div class="workshop-title"><strong>Oficina<br>de dados</strong><span>Responsável</span></div>
+                    <div class="workshop-detail">Introdução prática à organização, análise e visualização de dados para projetos acadêmicos e profissionais.</div>
+                    <div class="workshop-responsible">Nome Sobrenome<br><small>2h · Laboratório</small></div>
+                </article>
+                <article class="workshop-card" tabindex="0">
+                    <div class="workshop-title"><strong>Oficina<br>de prototipação</strong><span>Responsável</span></div>
+                    <div class="workshop-detail">Criação de protótipos e fluxos de interface para transformar ideias em soluções digitais testáveis.</div>
+                    <div class="workshop-responsible">Nome Sobrenome<br><small>2h · Laboratório</small></div>
+                </article>
+            </div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Próxima oficina" aria-controls="workshops-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
+        </div>
+    </section>
+
+    <section class="section location-section" id="local" aria-labelledby="location-title">
+        <div class="section-title">
+            <span class="eyebrow">COMO CHEGAR</span>
+            <h2 id="location-title">Localização do Evento</h2>
+            <p>Universidade Católica de Pelotas<br>Rua Gonçalves Chaves, 373 · Pelotas/RS</p>
+        </div>
+
+        <div class="location-grid">
+            <article class="location-info panel">
+                <span class="card-kicker">SEDE DO EVENTO</span>
+                <h3>Universidade Católica de Pelotas</h3>
+                <p>Rua Gonçalves Chaves, 373<br>Pelotas · RS<br>96015-560</p>
+                <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Gon%C3%A7alves%20Chaves%2C%20373%2C%20Pelotas%2C%20RS" target="_blank" rel="noopener noreferrer">Como chegar no Google Maps →</a>
+            </article>
+
+            <div class="map-container" data-maps-api-key="YOUR_GOOGLE_MAPS_API_KEY">
+                <div class="map-placeholder" aria-hidden="true">
+                    <span>Mapa interativo</span>
+                    <small>Espaço reservado para o Google Maps Embed API.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-desktop">
+            <div class="section-title compact-title">
+                <span class="eyebrow">FALE CONOSCO</span>
+                <h2>Contato</h2>
+            </div>
+            <div class="contact-box panel">
+                <div><p>✉ &nbsp; exemplo@email.ucpel.edu.br</p><p>☎ &nbsp; +55 (53) 1234-5678</p></div>
+                <div><p>◎ &nbsp; <a href="https://www.instagram.com/ucpel/" target="_blank" rel="noopener noreferrer">instagram.com/ucpel</a></p><p>◉ &nbsp; <a href="https://ucpel.edu.br/" target="_blank" rel="noopener noreferrer">ucpel.edu.br</a></p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section registration-section" id="inscricao" aria-labelledby="registration-title">
+        <div class="section-title">
+            <span class="eyebrow">PARTICIPE</span>
+            <h2 id="registration-title">Inscreva-se</h2>
+            <p>Participe da Semana Tecnológica UCPel 2026.</p>
+        </div>
+
+        <div class="registration-content">
+            <article class="registration-about panel">
+                <span class="card-kicker">SOBRE A INSCRIÇÃO</span>
+                <h3>Garanta sua participação.</h3>
+                <p>A inscrição será realizada online. O formulário definitivo será conectado aqui quando estiver disponível.</p>
+            </article>
+            <div class="registration-options">
+                <div><strong>Vagas limitadas</strong><span>Consulte a disponibilidade no formulário.</span></div>
+                <div><strong>Inscrição online</strong><span>Preenchimento rápido e digital.</span></div>
+                <div><strong>Certificado</strong><span>Informações serão divulgadas pela organização.</span></div>
+            </div>
+        </div>
+
+        <a class="outline-button registration-button" href="#" data-registration-link>INSCREVA-SE</a>
+        <small data-registration-status>O link do formulário será inserido nesta etapa do projeto.</small>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-main">
+        <div class="footer-logo-wrap">
+            <img src="/semana-tecnologica-2026/img/logo/LOGO UCPEL PREFERENCIAL_roxo-02.png" alt="Universidade Católica de Pelotas">
+        </div>
+        <h2>Semana Tecnológica UCPel 2026</h2>
+        <nav class="footer-links" aria-label="Links do rodapé">
+            <a href="#top">Início</a><a href="#programacao">Programação</a><a href="#palestrantes">Palestrantes</a><a href="#inscricao">Inscrição</a>
+        </nav>
+        <nav class="footer-links" aria-label="Links institucionais">
+            <a href="#local">Contato</a><a href="https://www.instagram.com/ucpel/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://ucpel.edu.br/" target="_blank" rel="noopener noreferrer">UCPel</a>
+        </nav>
+        <a class="back-top" href="#top">↑ VOLTAR AO TOPO</a>
+
+        <div class="footer-contact">
+            <h3>Contato</h3>
+            <p>exemplo@email.ucpel.edu.br</p>
+            <p>+55 (53) 1234-5678</p>
+            <p>Rua Gonçalves Chaves, 373 · Pelotas/RS</p>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Universidade Católica de Pelotas</div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
