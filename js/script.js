@@ -165,6 +165,33 @@ document.querySelectorAll('.workshop-card').forEach((card) => {
     });
 });
 
+const workshopCards = document.querySelectorAll('.workshop-card');
+
+function updateWorkshopWidths() {
+    const desktop = window.matchMedia('(min-width: 761px)').matches;
+
+    workshopCards.forEach((card) => {
+        if (!desktop) {
+            card.style.removeProperty('--workshop-min-width');
+            return;
+        }
+
+        const title = card.querySelector('.workshop-title');
+        if (!title) return;
+
+        const rightColumnMinimum = 260;
+        const titleWidth = Math.max(title.getBoundingClientRect().width, title.scrollWidth);
+        card.style.setProperty('--workshop-min-width', `${Math.ceil(titleWidth + rightColumnMinimum)}px`);
+    });
+}
+
+window.addEventListener('resize', updateWorkshopWidths);
+if ('ResizeObserver' in window) {
+    const workshopObserver = new ResizeObserver(updateWorkshopWidths);
+    workshopCards.forEach((card) => workshopObserver.observe(card));
+}
+updateWorkshopWidths();
+
 const mapContainer = document.querySelector('.map-container');
 
 function initMap() {
@@ -185,15 +212,3 @@ function initMap() {
 }
 
 initMap();
-
-const registrationLink = document.querySelector('[data-registration-link]');
-const registrationStatus = document.querySelector('[data-registration-status]');
-
-if (registrationLink && registrationStatus) {
-    registrationLink.addEventListener('click', (event) => {
-        if (registrationLink.getAttribute('href') === '#') {
-            event.preventDefault();
-            registrationStatus.textContent = 'O formulário ainda não foi conectado. Substitua o href deste botão pelo link oficial de inscrição.';
-        }
-    });
-}
