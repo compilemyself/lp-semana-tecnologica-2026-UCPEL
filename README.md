@@ -23,6 +23,8 @@ O projeto foi desenvolvido com HTML5, CSS3 e JavaScript, sem utilização de fra
 HTML concentra a estrutura da página, CSS cuida da identidade visual, layout e responsividade, e JavaScript é responsável pelas interações e partes dinâmicas da interface.
 
 ## Estrutura de pastas do projeto
+
+```text
 .
 ├── index.html
 ├── css/
@@ -34,6 +36,7 @@ HTML concentra a estrutura da página, CSS cuida da identidade visual, layout e 
     ├── logo/
     ├── oficinas/
     └── palestrantes/
+```
 
 A pasta `img` reúne os assets utilizados na página. Os arquivos `index.html`, `style.css` e `script.js` concentram a maior parte da implementação.
 
