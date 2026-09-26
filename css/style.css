@@ -1,3 +1,10 @@
+/*
+ * VARIÁVEIS DE IDENTIDADE E LAYOUT
+ * Centralizamos aqui as cores e algumas dimensões que se repetem pela página. O roxo, o azul e o amarelo
+ * (identificado no código como "orange") correspondem às cores principais definidas no manual de identidade
+ * visual da UCPel e formam a base cromática da interface. Mantemos essas cores em variáveis para preservar
+ * a consistência visual do projeto mesmo quando diferentes seções precisam de tons e contrastes próprios.
+ */
 :root {
     --navy: #15182f;
     --navy-2: #1b2446;
@@ -52,6 +59,7 @@ img { display: block; max-width: 100%; }
     border: 0;
 }
 
+/* Cabeçalho: além de ficar acessível durante a rolagem, usamos transparência e blur para manter a navegação integrada ao fundo em vez de criar uma faixa visual pesada. */
 .site-header {
     position: sticky;
     top: 0;
@@ -125,6 +133,7 @@ img { display: block; max-width: 100%; }
 .mobile-menu-button,
 .mobile-nav { display: none; }
 
+/* Hero: os gradientes misturam azul e roxo da identidade com áreas de transparência para dar sensação de movimento e profundidade sem perder o contraste do conteúdo. */
 .hero {
     position: relative;
     min-height: calc(100vh - var(--header));
@@ -418,6 +427,7 @@ img { display: block; max-width: 100%; }
 .about-topics p { max-width: 450px; margin: 0; color: var(--muted); font-size: 15px; }
 .section-note { margin-top: 32px; max-width: 760px !important; color: var(--muted); text-align: center; font-size: 15px; }
 
+/* Programação: o CSS dá destaque ao dia selecionado e deixa as demais linhas recuadas visualmente; o JavaScript controla qual estado deve aparecer. */
 .schedule-section {
     background:
         radial-gradient(circle at 78% 18%, rgba(83,39,97,.055), transparent 28%),
@@ -454,6 +464,7 @@ img { display: block; max-width: 100%; }
         linear-gradient(180deg, #e9ebee 0%, #e3e6e9 55%, #e6e8eb 100%);
 }
 
+/* Carrosséis: usamos rolagem horizontal e scroll-snap para criar uma navegação fluida sem biblioteca externa, mantendo os cartões alinhados durante o deslocamento. */
 .carousel { position: relative; }
 .speakers-carousel, .workshops-carousel { width: min(100%, 930px); margin-inline: auto; }
 .carousel-track { display: flex; gap: 22px; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 4px 16px; }
@@ -508,6 +519,7 @@ img { display: block; max-width: 100%; }
 
 .workshops-title { margin-top: 82px; margin-bottom: 26px; }
 .workshop-track { align-items: stretch; padding-inline: 0; }
+/* Oficinas: a expansão já prevista na prototipação ganha aqui sua implementação visual. O cartão cresce para revelar detalhes, enquanto o layout preserva uma área própria para o título. */
 .workshop-card {
     position: relative;
     flex: 0 0 42%;
@@ -559,6 +571,7 @@ img { display: block; max-width: 100%; }
 .workshop-card:not(:hover):not(:focus-within):not(.is-expanded) .workshop-detail {
     display: -webkit-box;
     -webkit-line-clamp: 5;
+    line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -566,6 +579,7 @@ img { display: block; max-width: 100%; }
 .workshop-responsible { grid-column: 2; padding: 0 22px 20px; color: var(--navy); font-size: 13px; font-weight: 800; }
 .workshop-responsible small { color: var(--muted); font-weight: 600; }
 
+/* Localização: o container do mapa recebe o iframe criado pelo JavaScript; o restante da seção mantém endereço e contato acessíveis mesmo sem o mapa. */
 .location-section { background: linear-gradient(180deg, #e3e6e9 0%, #e9ebee 100%); }
 .location-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 28px; align-items: stretch; }
 .location-info { min-height: 390px; padding: 30px; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,.32); border-left: 3px solid var(--purple); }
@@ -574,9 +588,6 @@ img { display: block; max-width: 100%; }
 .directions-link { width: max-content; margin-top: 28px; color: var(--blue-strong); font-weight: 800; text-decoration: none; }
 .map-container { min-height: 390px; overflow: hidden; border: 1px solid rgba(17,24,47,.10); border-radius: var(--radius); background: #dfe4e8; box-shadow: var(--soft-shadow); }
 .map-container iframe { width: 100%; height: 100%; min-height: 390px; display: block; border: 0; }
-.map-placeholder { min-height: 390px; display: grid; place-items: center; align-content: center; gap: 8px; color: var(--muted); text-align: center; background: linear-gradient(135deg, rgba(37,150,190,.09), rgba(83,39,97,.08)); }
-.map-placeholder span { color: var(--navy); font-size: 20px; font-weight: 800; }
-.map-placeholder small { max-width: 290px; font-size: 13px; }
 
 .contact-desktop { margin-top: 78px; }
 .contact-box { min-height: 130px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 22px 26px; background: rgba(83,39,97,.30); }
@@ -604,6 +615,11 @@ img { display: block; max-width: 100%; }
 .registration-button { display: flex; width: min(280px, 100%); margin: 42px auto 8px; min-height: 62px; font-size: 15px; }
 .registration-section > small { display: block; color: var(--muted); text-align: center; font-size: 12px; }
 
+/*
+ * RODAPÉ INSTITUCIONAL
+ * O roxo da UCPel domina o fundo e cria contraste para os logos dos três cursos de tecnologia em versões monocromáticas.
+ * A composição foi pensada para manter as marcas legíveis e, ao mesmo tempo, encerrar a página sem quebrar a identidade visual.
+ */
 .site-footer {
     background: linear-gradient(180deg, #e4e7ea 0%, rgba(83,39,97,.20) 10%, #4c5269 24%, #252d4b 38%, var(--hero) 52%, var(--hero) 100%);
 }
@@ -620,6 +636,7 @@ img { display: block; max-width: 100%; }
 .footer-bottom { padding: 16px 34px; color: rgba(255,255,255,.66); background: #0d1327; font-size: 13px; text-align: center; }
 
 
+/* Refinamos abaixo algumas variáveis após os primeiros estilos, concentrando os ajustes visuais finais da identidade. */
 :root {
     --navy: #14182f;
     --navy-2: #20284a;
@@ -851,8 +868,6 @@ img { display: block; max-width: 100%; }
 .location-info p { color: #596278; }
 .directions-link { color: var(--blue-strong); }
 .map-container { background: rgba(255,255,255,.16); }
-.map-placeholder { background: linear-gradient(135deg, rgba(37,150,190,.16), rgba(83,39,97,.13), rgba(222,173,76,.06)); }
-.map-placeholder span { color: #2a2d4b; }
 .contact-box { background: rgba(83,39,97,.28); border-color: rgba(255,255,255,.20); }
 .contact-box p { color: #f2edf5; }
 .contact-box a { color: #8dd7ed; }
@@ -888,6 +903,11 @@ img { display: block; max-width: 100%; }
 .footer-links a:hover { color: #72cbe5; }
 .back-top { color: rgba(222,173,76,.82); }
 
+/*
+ * RESPONSIVIDADE
+ * Abaixo de 760px reorganizamos a interface para priorizar leitura vertical, navegação mobile
+ * e componentes que ocupem melhor a largura reduzida.
+ */
 @media (max-width: 760px) {
     .header-logo { background: linear-gradient(90deg, #2596be 0%, #2596be 38%, rgba(37,150,190,.70) 64%, rgba(83,39,97,.18) 82%, rgba(37,150,190,0) 100%); }
     .hero { background-position: center; }
@@ -903,6 +923,7 @@ img { display: block; max-width: 100%; }
     .footer-main { min-height: 520px; padding-top: 72px; }
 }
 
+/* Quando o usuário prefere menos movimento, reduzimos animações, transições e rolagem suave para manter a interface confortável. */
 @media (prefers-reduced-motion: reduce) {
     .hero-main::before, .section::after { animation: none; }
 }
@@ -993,10 +1014,10 @@ img { display: block; max-width: 100%; }
     .workshop-title strong { font-size: 22px; overflow-wrap: anywhere; }
     .workshop-title span { font-size: 10px; }
     .workshop-detail, .workshop-card:hover .workshop-detail, .workshop-card:focus-within .workshop-detail, .workshop-card.is-expanded .workshop-detail { padding: 22px 20px 14px; opacity: 1; transform: translateY(0); }
-    .workshop-card:not(:hover):not(:focus-within):not(.is-expanded) .workshop-detail { -webkit-line-clamp: 3; }
+    .workshop-card:not(:hover):not(:focus-within):not(.is-expanded) .workshop-detail { -webkit-line-clamp: 3; line-clamp: 3; }
     .workshop-responsible { grid-column: auto; padding: 0 20px 16px; }
 
-    .location-info, .map-container, .map-placeholder, .map-container iframe { min-height: 280px; }
+    .location-info, .map-container, .map-container iframe { min-height: 280px; }
     .location-info { padding: 25px; }
     .contact-desktop { margin-top: 62px; }
     .contact-box { grid-template-columns: 1fr; }
@@ -1020,6 +1041,7 @@ img { display: block; max-width: 100%; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
 
+/* Nesta etapa consolidamos a paleta usada na versão final: o azul e o roxo seguem a identidade da UCPel, enquanto o amarelo entra como destaque pontual. */
 :root {
     --blue: #618DBB;
     --blue-strong: #4f7da9;
@@ -1069,6 +1091,7 @@ img { display: block; max-width: 100%; }
 .registration-button { background: linear-gradient(100deg, #618DBB 0%, #7235A2 58%, #532761 100%); }
 .registration-button:hover { background: linear-gradient(100deg, #74C8D2 0%, #9B50C0 58%, #7235A2 100%); }
 
+/* Ajuste final das oficinas: deixamos a coluna do título crescer conforme o texto e usamos minmax(0, 1fr) para que a área de detalhes absorva o espaço restante. Isso evita cortes quando o nome da oficina é mais extenso. */
 .workshop-title strong { overflow-wrap: normal; word-break: normal; hyphens: none; }
 .workshop-card { grid-template-columns: max-content minmax(0, 1fr); }
 .workshop-title { width: max-content; max-width: 100%; min-width: 190px; }

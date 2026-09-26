@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- No elemento head definimos as informações básicas da página, como metadados, identidade visual no navegador e a folha CSS principal. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Semana Tecnológica UCPel 2026">
@@ -10,6 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="top">
+
+<!-- No cabeçalho deixamos a navegação principal sempre acessível durante a rolagem e reunimos os atalhos mais importantes da landing page. -->
 <header class="site-header">
     <a class="header-logo" href="#top" aria-label="UCPel — início">
         <img src="img/logo/LOGO UCPEL PREFERENCIAL.png" alt="Universidade Católica de Pelotas">
@@ -28,6 +31,7 @@
         <span></span><span></span><span></span>
     </button>
 
+    <!-- No mobile usamos uma navegação própria, que o JavaScript abre e fecha conforme a interação do usuário; os atributos ARIA acompanham esse mesmo estado. -->
     <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel" aria-hidden="true">
         <a href="#sobre">Sobre</a>
         <a href="#programacao">Programação</a>
@@ -38,6 +42,11 @@
 </header>
 
 <main>
+    <!--
+    Hero: aqui concentramos a primeira apresentação do evento, a chamada para inscrição e as informações essenciais.
+    A imagem principal ainda é um espaço reservado e os dados que dependem da organização do evento
+    podem ser trocados depois sem precisar refazer a estrutura da seção.
+-->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="hero-main">
             <div class="hero-copy">
@@ -68,6 +77,12 @@
         </a>
     </section>
 
+
+    <!--
+    Sobre: juntamos a apresentação resumida do evento, o vídeo e os três eixos da proposta.
+    Alguns textos e o material audiovisual ainda podem ser substituídos pelas informações definitivas;
+    a estrutura da seção já está pronta para receber esse conteúdo.
+-->
     <section class="section about" id="sobre" aria-labelledby="about-title">
         <div class="section-title">
             <span class="eyebrow">CONHEÇA O EVENTO</span>
@@ -85,7 +100,7 @@
                 <div class="video-frame panel">
                     <iframe
                         src="https://www.youtube.com/embed/iI-4nVWO9DE?rel=0&playsinline=1"
-                        title="Vídeo provisório da Semana Tecnológica"
+                        title="Vídeo da Semana Tecnológica"
                         loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
@@ -112,6 +127,12 @@
         <p class="section-note">Uma programação pensada para aproximar a comunidade acadêmica das tecnologias e práticas que movimentam o mercado.</p>
     </section>
 
+
+    <!--
+    Programação: a tabela atende à leitura em telas maiores, enquanto o container mobile recebe cartões gerados pelo JavaScript.
+    Os nomes e atividades abaixo ainda servem como conteúdo de preenchimento e poderão ser substituídos pelos dados oficiais
+    sem alterar a lógica de seleção dos dias ou a adaptação para mobile.
+-->
     <section class="section schedule-section" id="programacao" aria-labelledby="schedule-title">
         <div class="section-title">
             <span class="eyebrow">AGENDA</span>
@@ -119,6 +140,7 @@
             <p>Selecione um dia para consultar as atividades.</p>
         </div>
 
+        <!-- Os botões funcionam como abas: além do destaque visual, aria-selected registra qual dia está ativo para tecnologias assistivas. -->
         <div class="day-tabs" role="tablist" aria-label="Dias da programação">
             <button class="day-tab is-active" id="tab-SEG" data-day="SEG" type="button" role="tab" aria-selected="true" aria-controls="schedule-table">SEG</button>
             <button class="day-tab" id="tab-TER" data-day="TER" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">TER</button>
@@ -127,6 +149,7 @@
             <button class="day-tab" id="tab-SEX" data-day="SEX" type="button" role="tab" aria-selected="false" aria-controls="schedule-table">SEX</button>
         </div>
 
+        <!-- Mantemos a tabela completa no HTML porque ela representa a forma mais direta de consultar a programação em telas maiores. -->
         <div class="schedule-table-wrap">
             <table class="schedule-table" id="schedule-table">
                 <thead>
@@ -146,15 +169,22 @@
             </table>
         </div>
 
+        <!-- No mobile, o JavaScript reaproveita os dados da programação e monta cartões, evitando depender de uma tabela larga em uma tela estreita. -->
         <div class="mobile-activities" aria-live="polite"></div>
     </section>
 
+
+    <!--
+    Palestrantes e oficinas: usamos a mesma estrutura de carrossel para organizar conteúdos horizontais sem depender de framework.
+    Os nomes, imagens, áreas e links ainda são campos de preenchimento; a estrutura já está preparada para receber os dados reais.
+-->
     <section class="section people-section" id="palestrantes" aria-labelledby="speakers-title">
         <div class="section-title">
             <span class="eyebrow">CONVIDADOS</span>
             <h2 id="speakers-title">Palestrantes</h2>
         </div>
 
+        <!-- Carrossel de palestrantes: os controles são associados ao track por aria-controls. -->
         <div class="carousel speakers-carousel">
             <button class="carousel-arrow carousel-prev" type="button" aria-label="Palestrante anterior" aria-controls="speakers-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
             <div class="people-track carousel-track" id="speakers-track" tabindex="0">
@@ -197,6 +227,7 @@
             <h2>Oficinas</h2>
         </div>
 
+        <!-- Carrossel de oficinas: os cartões também podem ser expandidos por interação, especialmente em telas menores. -->
         <div class="carousel workshops-carousel">
             <button class="carousel-arrow carousel-prev" type="button" aria-label="Oficina anterior" aria-controls="workshops-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
             <div class="workshop-track carousel-track" id="workshops-track" tabindex="0">
@@ -220,6 +251,11 @@
         </div>
     </section>
 
+
+    <!--
+    Localização e contato: reunimos endereço, acesso ao Google Maps e canais institucionais.
+    O endereço já está definido para a página, enquanto os canais de contato ainda podem receber os dados oficiais.
+-->
     <section class="section location-section" id="local" aria-labelledby="location-title">
         <div class="section-title">
             <span class="eyebrow">COMO CHEGAR</span>
@@ -235,12 +271,11 @@
                 <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Gon%C3%A7alves%20Chaves%2C%20373%2C%20Pelotas%2C%20RS" target="_blank" rel="noopener noreferrer">Como chegar no Google Maps →</a>
             </article>
 
-            <div class="map-container" data-maps-api-key="YOUR_GOOGLE_MAPS_API_KEY">
-                <div class="map-placeholder" aria-hidden="true">
-                    <span>Mapa interativo</span>
-                    <small>Espaço reservado para o Google Maps Embed API.</small>
-                </div>
-            </div>
+            <!--
+                Mantemos aqui apenas o marcador da chave para que a configuração possa ser preenchida antes da publicação.
+                Como o mapa é carregado pelo navegador, a chave não é tratada como informação privada.
+            -->
+            <div class="map-container" data-maps-api-key="YOUR_GOOGLE_MAPS_API_KEY"></div>
         </div>
 
         <div class="contact-desktop">
@@ -255,6 +290,11 @@
         </div>
     </section>
 
+
+    <!--
+    Inscrição: mantemos a chamada principal para o formulário externo e um resumo das informações de participação.
+    Alguns textos ainda são provisórios; o formulário já representa a integração externa prevista para o projeto.
+-->
     <section class="section registration-section" id="inscricao" aria-labelledby="registration-title">
         <div class="section-title">
             <span class="eyebrow">PARTICIPE</span>
@@ -280,6 +320,13 @@
     </section>
 </main>
 
+
+<!--
+    Rodapé: encerramos a página com a identificação institucional, navegação complementar e contatos.
+    Os três cursos de tecnologia (Análise e Desenvolvimento de Sistemas, Gestão de Tecnologia da Informação
+    e Ciência de Dados e Inteligência Artificial) aparecem com seus logos em versões monocromáticas,
+    escolhidas para manter contraste com o fundo roxo da UCPel e seguir a identidade visual institucional.
+-->
 <footer class="site-footer">
     <div class="footer-main">
         <div class="footer-brands">
@@ -311,6 +358,10 @@
     <div class="footer-bottom">© 2026 Universidade Católica de Pelotas</div>
 </footer>
 
+<!--
+    Carregamos o JavaScript ao final do documento para que a estrutura HTML já esteja disponível
+    quando os comportamentos forem inicializados; assim, as funções encontram os elementos que precisam controlar.
+-->
 <script src="js/script.js"></script>
 </body>
 </html>

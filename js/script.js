@@ -1,3 +1,10 @@
+/*
+ * NAVEGAÇÃO MOBILE
+ * O JavaScript cuida aqui do estado do menu que já foi previsto na estrutura mobile do HTML.
+ * Além de abrir e fechar a navegação visualmente, atualizamos os atributos ARIA para manter o mesmo
+ * estado para tecnologias assistivas. Centralizamos o fechamento em uma função porque o menu pode ser
+ * fechado pelo botão, por um link interno ou pela tecla Escape.
+ */
 const menuButton = document.querySelector('.mobile-menu-button');
 const mobileNav = document.querySelector('#mobile-nav');
 
@@ -24,6 +31,12 @@ if (menuButton && mobileNav) {
     });
 }
 
+
+/*
+ * COMPORTAMENTO DO AVISO DE ROLAGEM
+ * O aviso pertence ao Hero e serve apenas como indicação inicial de navegação. Conforme a página é rolada,
+ * calculamos sua opacidade a partir da altura real da seção para que o comportamento acompanhe diferentes telas.
+ */
 const scrollPrompt = document.querySelector('.scroll-prompt');
 const hero = document.querySelector('.hero');
 
@@ -41,6 +54,14 @@ if (scrollPrompt && hero) {
     updateScrollPrompt();
 }
 
+
+/*
+ * DADOS DA PROGRAMAÇÃO MOBILE
+ * Estes dados alimentam os cartões usados na versão mobile. Nesta etapa, alguns nomes e atividades ainda são provisórios,
+ * mas a estrutura já está organizada para receber as informações reais sem mudar a função que faz a renderização.
+ * A tabela desktop continua no HTML; aqui mantemos apenas a estrutura necessária para apresentar a mesma programação
+ * em um formato mais adequado a telas estreitas.
+ */
 const activityData = {
     SEG: [
         ['Abertura da Semana Tecnológica', 'Equipe UCPel', 'Auditório', '05/10 · 09:00'],
@@ -68,6 +89,11 @@ const dayTabs = document.querySelectorAll('.day-tab');
 const scheduleRows = document.querySelectorAll('.schedule-table tbody tr');
 const activityContainer = document.querySelector('.mobile-activities');
 
+
+/*
+ * Geramos os cartões do dia selecionado a partir dos dados acima, em vez de manter uma estrutura HTML diferente para cada dia.
+ * O map transforma cada registro em um cartão e, com isso, a troca de conteúdo fica concentrada nos dados da programação.
+ */
 function renderMobileActivities(day) {
     if (!activityContainer) return;
     const activities = activityData[day] || [];
@@ -81,6 +107,12 @@ function renderMobileActivities(day) {
     `).join('');
 }
 
+
+/*
+ * SELEÇÃO DO DIA
+ * Esta função é o ponto que mantém as duas versões da programação sincronizadas. Ao trocar de aba, atualizamos
+ * o estado visual/ARIA da aba, destacamos as linhas correspondentes na tabela e regeneramos os cartões mobile.
+ */
 function selectDay(day) {
     dayTabs.forEach((tab) => {
         const active = tab.dataset.day === day;
@@ -93,8 +125,16 @@ function selectDay(day) {
 }
 
 dayTabs.forEach((tab) => tab.addEventListener('click', () => selectDay(tab.dataset.day)));
-selectDay('TER');
+// O HTML começa com SEG ativo; mantemos o estado inicial do JavaScript alinhado a essa marcação.
+selectDay('SEG');
 
+
+/*
+ * CARROSSEIS
+ * Os carrosséis de palestrantes e oficinas usam a mesma função, deixando no JavaScript apenas a lógica que os dois componentes realmente compartilham.
+ * O deslocamento considera a largura real do primeiro cartão e o espaçamento entre elementos, enquanto os controles são atualizados
+ * conforme a posição da rolagem. Assim, o comportamento acompanha as dimensões atuais da interface em vez de depender de valores fixos.
+ */
 function setupCarousel(trackSelector) {
     const track = document.querySelector(trackSelector);
     if (!track) return;
@@ -104,6 +144,7 @@ function setupCarousel(trackSelector) {
     const next = carousel.querySelector('.carousel-next');
     let scrollEndTimer;
 
+    // Usamos o tamanho real do cartão para que cada clique avance aproximadamente uma unidade de conteúdo, mesmo quando o layout muda de tamanho.
     const getStep = () => {
         const card = track.firstElementChild;
         if (!card) return track.clientWidth;
@@ -111,6 +152,7 @@ function setupCarousel(trackSelector) {
         return card.getBoundingClientRect().width + gap;
     };
 
+    // Os controles só ficam disponíveis quando ainda existe conteúdo fora da área visível; quando chegamos a uma extremidade, o respectivo botão é retirado da navegação.
     const updateButtons = () => {
         const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
         const currentScroll = Math.max(0, track.scrollLeft);
@@ -147,9 +189,16 @@ function setupCarousel(trackSelector) {
     window.setTimeout(updateButtons, 80);
 }
 
+// A mesma lógica atende aos dois conjuntos de cartões, evitando manter dois carrosséis com comportamentos diferentes.
 setupCarousel('#speakers-track');
 setupCarousel('#workshops-track');
 
+/*
+ * INTERAÇÃO DAS OFICINAS
+ * O CSS já define a expansão do cartão por hover e foco; aqui tratamos principalmente os dispositivos que não trabalham com hover.
+ * Nesses casos, clique, Enter e Espaço alternam a classe is-expanded para revelar o mesmo conteúdo. A verificação de hover evita
+ * que o clique crie um segundo comportamento em dispositivos onde a expansão já é conduzida pelo mouse.
+ */
 document.querySelectorAll('.workshop-card').forEach((card) => {
     card.addEventListener('click', (event) => {
         if (window.matchMedia('(hover: hover)').matches) return;
@@ -167,6 +216,13 @@ document.querySelectorAll('.workshop-card').forEach((card) => {
 
 const workshopCards = document.querySelectorAll('.workshop-card');
 
+
+/*
+ * AJUSTE DE LARGURA DAS OFICINAS
+ * No desktop, calculamos uma largura mínima a partir do título e reservamos espaço para o restante do cartão. Isso é importante
+ * porque alguns nomes de oficinas podem ser maiores e não queremos que o bloco esquerdo corte palavras ou fique estreito demais.
+ * No mobile, retiramos essa restrição e deixamos o cartão ocupar a largura disponível.
+ */
 function updateWorkshopWidths() {
     const desktop = window.matchMedia('(min-width: 761px)').matches;
 
@@ -192,14 +248,25 @@ if ('ResizeObserver' in window) {
 }
 updateWorkshopWidths();
 
+
+/*
+ * INTEGRAÇÃO COM O GOOGLE MAPS
+ * O mapa é criado aqui a partir da chave da API e do endereço definidos na página.
+ * Codificamos o endereço antes de inseri-lo na URL para garantir que caracteres
+ * especiais sejam interpretados corretamente pelo serviço do Google Maps.
+ *
+ * Como a chave precisa ser enviada ao navegador para carregar o mapa, ela não é
+ * tratada como informação privada. O controle adequado é restringir seu uso no
+ * Google Cloud ao serviço e aos domínios utilizados pelo projeto.
+ */
 const mapContainer = document.querySelector('.map-container');
 
 function initMap() {
     if (!mapContainer) return;
     const key = mapContainer.dataset.mapsApiKey?.trim();
-    const placeholder = mapContainer.querySelector('.map-placeholder');
-    if (!key || key === 'YOUR_GOOGLE_MAPS_API_KEY') return;
+    if (!key || key === 'AIzaSyAQ5Dyg3bQ7kBmbrmXxuxat-cfyhdO4t1M') return;
 
+    // Codificamos o endereço antes de incorporá-lo à URL para que espaços e caracteres especiais não quebrem a consulta do mapa.
     const query = encodeURIComponent('Rua Gonçalves Chaves, 373, Pelotas, RS, Brasil');
     const iframe = document.createElement('iframe');
     iframe.title = 'Mapa da Universidade Católica de Pelotas';
@@ -207,8 +274,9 @@ function initMap() {
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.src = `https://www.google.com/maps/embed/v1/place?key=${encodeURIComponent(key)}&q=${query}`;
+
+    // Só colocamos o iframe na página depois de montar sua configuração, evitando deixar um mapa parcialmente configurado no container.
     mapContainer.replaceChildren(iframe);
-    if (placeholder) placeholder.remove();
 }
 
 initMap();
