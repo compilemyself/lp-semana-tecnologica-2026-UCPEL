@@ -214,40 +214,6 @@ document.querySelectorAll('.workshop-card').forEach((card) => {
     });
 });
 
-const workshopCards = document.querySelectorAll('.workshop-card');
-
-
-/*
- * AJUSTE DE LARGURA DAS OFICINAS
- * No desktop, calculamos uma largura mínima a partir do título e reservamos espaço para o restante do cartão. Isso é importante
- * porque alguns nomes de oficinas podem ser maiores e não queremos que o bloco esquerdo corte palavras ou fique estreito demais.
- * No mobile, retiramos essa restrição e deixamos o cartão ocupar a largura disponível.
- */
-function updateWorkshopWidths() {
-    const desktop = window.matchMedia('(min-width: 761px)').matches;
-
-    workshopCards.forEach((card) => {
-        if (!desktop) {
-            card.style.removeProperty('--workshop-min-width');
-            return;
-        }
-
-        const title = card.querySelector('.workshop-title');
-        if (!title) return;
-
-        const rightColumnMinimum = 260;
-        const titleWidth = Math.max(title.getBoundingClientRect().width, title.scrollWidth);
-        card.style.setProperty('--workshop-min-width', `${Math.ceil(titleWidth + rightColumnMinimum)}px`);
-    });
-}
-
-window.addEventListener('resize', updateWorkshopWidths);
-if ('ResizeObserver' in window) {
-    const workshopObserver = new ResizeObserver(updateWorkshopWidths);
-    workshopCards.forEach((card) => workshopObserver.observe(card));
-}
-updateWorkshopWidths();
-
 
 /*
  * INTEGRAÇÃO COM O GOOGLE MAPS

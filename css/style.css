@@ -1091,14 +1091,24 @@ img { display: block; max-width: 100%; }
 .registration-button { background: linear-gradient(100deg, #618DBB 0%, #7235A2 58%, #532761 100%); }
 .registration-button:hover { background: linear-gradient(100deg, #74C8D2 0%, #9B50C0 58%, #7235A2 100%); }
 
-/* Ajuste final das oficinas: deixamos a coluna do título crescer conforme o texto e usamos minmax(0, 1fr) para que a área de detalhes absorva o espaço restante. Isso evita cortes quando o nome da oficina é mais extenso. */
-.workshop-title strong { overflow-wrap: normal; word-break: normal; hyphens: none; }
-.workshop-card { grid-template-columns: max-content minmax(0, 1fr); }
-.workshop-title { width: max-content; max-width: 100%; min-width: 190px; }
-.workshop-title strong { white-space: normal; }
-.workshop-card { flex-basis: max(calc((100% - 22px) / 2), var(--workshop-min-width, 0px)); }
-.workshop-card:hover, .workshop-card:focus-within, .workshop-card.is-expanded { flex-basis: max(68%, var(--workshop-min-width, 0px)); }
-.workshops-carousel .carousel-next { z-index: 8; }
+/* Oficinas: no desktop, a coluna do título mantém uma largura controlada para preservar a diferença visual entre o estado retraído e o expandido. */
+@media (min-width: 761px) {
+    .workshop-title strong { overflow-wrap: normal; word-break: normal; hyphens: none; white-space: normal; font-size: clamp(21px, 2vw, 24px); }
+    .workshop-card { grid-template-columns: minmax(220px, 240px) minmax(0, 1fr); flex-basis: max(calc((100% - 22px) / 2), var(--workshop-min-width, 0px)); }
+    .workshop-title { width: auto; max-width: none; min-width: 0; }
+    .workshop-card:hover, .workshop-card:focus-within, .workshop-card.is-expanded { flex-basis: max(68%, var(--workshop-min-width, 0px)); }
+    .workshops-carousel .carousel-next { z-index: 8; }
+}
+
+@media (max-width: 760px) {
+    .workshop-card:hover, .workshop-card:focus-within, .workshop-card.is-expanded {
+        flex-basis: 100%;
+        transform: none;
+        background: linear-gradient(145deg, rgba(255,255,255,.52), rgba(230,232,235,.46));
+        border-color: rgba(83,39,97,.38);
+        box-shadow: none;
+    }
+}
 
 .site-footer {
     background:
