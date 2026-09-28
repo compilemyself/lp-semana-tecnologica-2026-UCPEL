@@ -3,7 +3,7 @@
  * O JavaScript cuida aqui do estado do menu que já foi previsto na estrutura mobile do HTML.
  * Além de abrir e fechar a navegação visualmente, atualizamos os atributos ARIA para manter o mesmo
  * estado para tecnologias assistivas. Centralizamos o fechamento em uma função porque o menu pode ser
- * fechado pelo botão, por um link interno ou pela tecla Escape.
+ * fechado pelo botão, por um link interno, por um clique fora da navegação ou pela tecla Escape.
  */
 const menuButton = document.querySelector('.mobile-menu-button');
 const mobileNav = document.querySelector('#mobile-nav');
@@ -13,18 +13,36 @@ if (menuButton && mobileNav) {
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Abrir menu');
         mobileNav.setAttribute('aria-hidden', 'true');
+        mobileNav.inert = true;
         mobileNav.classList.remove('is-open');
     };
 
+    const openMenu = () => {
+        mobileNav.inert = false;
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-label', 'Fechar menu');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        mobileNav.classList.add('is-open');
+    };
+
+    closeMenu();
+
     menuButton.addEventListener('click', () => {
         const open = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', String(!open));
-        menuButton.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
-        mobileNav.setAttribute('aria-hidden', String(open));
-        mobileNav.classList.toggle('is-open', !open);
+        if (open) {
+            closeMenu();
+            return;
+        }
+        openMenu();
     });
 
     mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('click', (event) => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        if (!open || mobileNav.contains(event.target) || menuButton.contains(event.target)) return;
+        closeMenu();
+    });
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') closeMenu();
@@ -213,36 +231,3 @@ document.querySelectorAll('.workshop-card').forEach((card) => {
         card.classList.toggle('is-expanded');
     });
 });
-
-
-/*
- * INTEGRAÇÃO COM O GOOGLE MAPS
- * O mapa é criado aqui a partir da chave da API e do endereço definidos na página.
- * Codificamos o endereço antes de inseri-lo na URL para garantir que caracteres
- * especiais sejam interpretados corretamente pelo serviço do Google Maps.
- *
- * Como a chave precisa ser enviada ao navegador para carregar o mapa, ela não é
- * tratada como informação privada. O controle adequado é restringir seu uso no
- * Google Cloud ao serviço e aos domínios utilizados pelo projeto.
- */
-const mapContainer = document.querySelector('.map-container');
-
-function initMap() {
-    if (!mapContainer) return;
-    const key = mapContainer.dataset.mapsApiKey?.trim();
-    if (!key || key === 'AIzaSyAQ5Dyg3bQ7kBmbrmXxuxat-cfyhdO4t1M') return;
-
-    // Codificamos o endereço antes de incorporá-lo à URL para que espaços e caracteres especiais não quebrem a consulta do mapa.
-    const query = encodeURIComponent('Rua Gonçalves Chaves, 373, Pelotas, RS, Brasil');
-    const iframe = document.createElement('iframe');
-    iframe.title = 'Mapa da Universidade Católica de Pelotas';
-    iframe.loading = 'lazy';
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.src = `https://www.google.com/maps/embed/v1/place?key=${encodeURIComponent(key)}&q=${query}`;
-
-    // Só colocamos o iframe na página depois de montar sua configuração, evitando deixar um mapa parcialmente configurado no container.
-    mapContainer.replaceChildren(iframe);
-}
-
-initMap();

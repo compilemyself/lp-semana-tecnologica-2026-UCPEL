@@ -579,7 +579,7 @@ img { display: block; max-width: 100%; }
 .workshop-responsible { grid-column: 2; padding: 0 22px 20px; color: var(--navy); font-size: 13px; font-weight: 800; }
 .workshop-responsible small { color: var(--muted); font-weight: 600; }
 
-/* Localização: o container do mapa recebe o iframe criado pelo JavaScript; o restante da seção mantém endereço e contato acessíveis mesmo sem o mapa. */
+/* Localização: o mapa é incorporado diretamente pelo HTML para ocupar a mesma área reservada ao mapa sem depender de uma chave de API. */
 .location-section { background: linear-gradient(180deg, #e3e6e9 0%, #e9ebee 100%); }
 .location-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 28px; align-items: stretch; }
 .location-info { min-height: 390px; padding: 30px; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,.32); border-left: 3px solid var(--purple); }
@@ -1013,7 +1013,7 @@ img { display: block; max-width: 100%; }
     .workshop-title { grid-row: auto; border-right: 0; border-bottom: 1px dashed rgba(83,39,97,.28); padding: 18px 20px; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
     .workshop-title strong { font-size: 22px; overflow-wrap: anywhere; }
     .workshop-title span { font-size: 10px; }
-    .workshop-detail, .workshop-card:hover .workshop-detail, .workshop-card:focus-within .workshop-detail, .workshop-card.is-expanded .workshop-detail { padding: 22px 20px 14px; opacity: 1; transform: translateY(0); }
+    .workshop-detail, .workshop-card:hover .workshop-detail, .workshop-card:focus-within .workshop-detail, .workshop-card.is-expanded .workshop-detail { padding: 22px 34px 14px; opacity: 1; transform: translateY(0); }
     .workshop-card:not(:hover):not(:focus-within):not(.is-expanded) .workshop-detail { -webkit-line-clamp: 3; line-clamp: 3; }
     .workshop-responsible { grid-column: auto; padding: 0 20px 16px; }
 

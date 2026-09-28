@@ -15,7 +15,7 @@
 <!-- No cabeçalho deixamos a navegação principal sempre acessível durante a rolagem e reunimos os atalhos mais importantes da landing page. -->
 <header class="site-header">
     <a class="header-logo" href="#top" aria-label="UCPel — início">
-        <img src="img/logo/LOGO UCPEL PREFERENCIAL.png" alt="Universidade Católica de Pelotas">
+        <img src="img/logo/logo%20UCPEL%20PREFERENCIAL.png" alt="Universidade Católica de Pelotas">
     </a>
 
     <nav class="desktop-nav" aria-label="Navegação principal">
@@ -32,7 +32,7 @@
     </button>
 
     <!-- No mobile usamos uma navegação própria, que o JavaScript abre e fecha conforme a interação do usuário; os atributos ARIA acompanham esse mesmo estado. -->
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel" aria-hidden="true">
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel" aria-hidden="true" inert>
         <a href="#sobre">Sobre</a>
         <a href="#programacao">Programação</a>
         <a href="#palestrantes">Palestrantes</a>
@@ -191,32 +191,32 @@
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Inteligência Artificial<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Inteligência Artificial<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Desenvolvimento<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Desenvolvimento<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Dados e Tecnologia<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Dados e Tecnologia<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Produto e Inovação<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Produto e Inovação<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Segurança da Informação<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Segurança da Informação<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
                 <article class="speaker-card">
                     <div class="speaker-image image-placeholder"><span class="image-icon" aria-hidden="true"></span></div>
                     <div class="speaker-name">Nome Sobrenome</div>
-                    <div class="speaker-meta">Empreendedorismo<br><a href="#">LinkedIn</a></div>
+                    <div class="speaker-meta">Empreendedorismo<br><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
                 </article>
             </div>
             <button class="carousel-arrow carousel-next" type="button" aria-label="Próximo palestrante" aria-controls="speakers-track"><span class="carousel-arrow-icon" aria-hidden="true"></span></button>
@@ -271,11 +271,10 @@
                 <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Gon%C3%A7alves%20Chaves%2C%20373%2C%20Pelotas%2C%20RS" target="_blank" rel="noopener noreferrer">Como chegar no Google Maps →</a>
             </article>
 
-            <!--
-                Mantemos aqui apenas o marcador da chave para que a configuração possa ser preenchida antes da publicação.
-                Como o mapa é carregado pelo navegador, a chave não é tratada como informação privada.
-            -->
-            <div class="map-container" data-maps-api-key="YOUR_GOOGLE_MAPS_API_KEY"></div>
+            <!-- O mapa usa o embed oficial do Google Maps para manter a localização disponível sem depender de uma chave de API no código. -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3391.8543018994455!2d-52.34132225!3d-31.774459549999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9511b59569451f1b%3A0xeacd7712b9f1e1a9!2sR.%20Gon%C3%A7alves%20Chaves%2C%20373%20-%20Centro%2C%20Pelotas%20-%20RS%2C%2096015-560!5e0!3m2!1spt-BR!2sbr!4v1790602051417!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
         </div>
 
         <div class="contact-desktop">
